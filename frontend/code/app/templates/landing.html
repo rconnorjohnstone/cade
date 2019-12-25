@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 
 {% block body %}
-<h1> Cade Johnstone Has A Website!!! </h1>
-<h2> Type a message below! </h2>
-<form action="/" method="POST">
-    <input type="textarea" name="message">
-    <input type="submit">
-</form>  
+<div class="landing">
+  <div class="info_box">
+    <h1> Cade Johnstone's Personal Site </h1>
+    <h2> Merry Christmas! </h2>
+    <p> This website can be your personal space to explore web development as you learn computer science </p>
+    <p> Type a message below </p>
+    <form action="/" method="POST">
+        <input class="message_box" type="textarea" name="message">
+        <input class="button" type="submit">
+    </form>  
+  </div>
+</div>
 {% endblock %}

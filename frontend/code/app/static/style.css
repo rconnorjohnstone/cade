@@ -1,0 +1,49 @@
+html {
+  color: white;
+}
+
+body {
+  margin: 0;
+  background-color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.landing {
+  background-image: url("http://getwallpapers.com/wallpaper/full/f/9/b/683121.jpg");
+  background-size: cover;
+  opacity: 0.8;
+  width: 100vw;
+  height: 100vh;
+}
+
+.info_box {
+  position: relative;
+  top: 60vh;
+  padding: 1rem;
+}
+
+.message_box {
+  background: transparent;
+  border-radius: 12px;
+  height: 2rem;
+  min-width: 25rem;
+  display: block;
+  margin: 1rem 0;
+  color: white;
+  padding: 0.2rem 1rem;
+}
+
+.button {
+  background: black;
+  border: 2px solid white;
+  border-radius: 12px;
+  height: 2rem;
+  min-width: 10rem;
+  color: white;
+  display: block;
+  margin: 1rem 0;
+}
+
