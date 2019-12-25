@@ -22,10 +22,14 @@ l = logging.getLogger(__name__)
 
 def donutify(message_list):
     i = 0
+    donut_list = []
     for word in message_list:
-        if i%2==1:
-            word = "donut"
+        if i%2 == 1:
+            donut_list.append("donut")
+        else:
+            donut_list.append(word)
         i += 1
+    return donut_list
 
 
 def message_service(): 
@@ -39,7 +43,7 @@ def message_service():
         rkey = "msg_" + msg
         if not current_app.config["REDIS_DB"].exists(rkey):
             msg_list = msg.split(" ")
-            donut_msg = donutify(msg_list)
+            donut_msg = " ".join(donutify(msg_list))
         else: 
             donut_msg = current_app.config["REDIS_DB"].hget(rkey, "msg").decode('utf-8')
 
