@@ -1,0 +1,51 @@
+version: '3.7'
+
+services: 
+  front_end: 
+    build: ./frontend
+    env_file: 
+      - ./frontend/frontend.env
+    volumes: 
+      - type: bind
+        source: ./frontend/code
+        target: /app/
+    ports: 
+      - 5050:5000
+    networks: 
+      - backend_network
+    container_name: frontend
+    entrypoint: > 
+      watchmedo auto-restart --recursive --directory='/app/' python3 frontend.py
+
+  api: 
+    build: ./api
+    env_file: 
+      - ./api/api.env
+    volumes: 
+      - type: bind
+        source: ./api/code
+        target: /api/code
+    expose: 
+      - 5000
+    networks: 
+      - backend_network
+      - cache_network
+    container_name: api
+    entrypoint: > 
+      watchmedo auto-restart --recursive --directory='/app/' python3 api.py
+
+  redis_cache: 
+    image: redis:5-alpine
+    expose: 
+      - 6379
+    volumes: 
+      - type: bind 
+        source: /tmp/redis
+        target: /data
+    container_name: redis
+    networks:
+      - cache_network
+  
+networks:
+  backend_network:
+  cache_network:
