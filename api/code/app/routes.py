@@ -20,6 +20,14 @@ import re
 
 l = logging.getLogger(__name__)
 
+def donutify(message_list):
+    i = 0
+    for word in message_list:
+        if i%2==1:
+            word = "donut"
+        i += 1
+
+
 def message_service(): 
     try:
         # get message and check if exists
@@ -30,7 +38,8 @@ def message_service():
 
         rkey = "msg_" + msg
         if not current_app.config["REDIS_DB"].exists(rkey):
-            donut_msg = msg
+            msg_list = msg.split(" ")
+            donut_msg = donutify(msg_list)
         else: 
             donut_msg = current_app.config["REDIS_DB"].hget(rkey, "msg").decode('utf-8')
 
